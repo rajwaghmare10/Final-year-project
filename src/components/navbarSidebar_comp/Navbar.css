@@ -1,0 +1,93 @@
+    /* Navbar Container */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 15px;
+        border-bottom: 1px solid black;
+        background-color: #fff;
+        z-index: 1000;
+    }
+
+    .navbar::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 85%;
+        height: 100%;
+        box-shadow: 0 10px 0px rgba(0, 0, 0, 0.5);
+        pointer-events: none;
+        
+    }
+
+    /* Logo Section */
+    .logo {
+        width: 17%;
+        display: flex;
+        align-items: center;
+        font-size: 1.2em;
+        padding-left: 15px;
+    }
+
+    .logo button {
+        margin-right: 15px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    /* Main Section to Hold Search and Login Button */
+    .part {
+        display: flex;
+        align-items: center;
+        width: 75%;
+        justify-content: space-between;
+    }
+
+    /* Search Section */
+    .search {
+        display: flex;
+        align-items: center;
+        width: 450px;
+        /* Responsive width adjustment */
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+    }
+
+    .search .search-box {
+        width: 100%;
+        border: none;
+        font-size: 1em;
+        padding-left: 10px;
+        color: #333;
+    }
+
+    .search .search-box:focus {
+        outline: none;
+    }
+
+    /* Login Button */
+    .lg-button {
+        margin-right: 30px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        border: none;
+        color: #fff;
+        font-size: 1em;
+        border-radius: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Body Padding to Prevent Overlap */
+    body {
+        padding-top: 60px;
+        /* Adjust based on navbar height */
+    }

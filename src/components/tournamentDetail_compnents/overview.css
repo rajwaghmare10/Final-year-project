@@ -1,0 +1,107 @@
+  
+.overview-container p {
+  color: white;
+  width: 100%;
+  padding-bottom: 30px;
+}
+
+/* Format Section Styling */
+.format-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: white;
+  border-top: 1px solid #c4a8f0;
+  padding-top: 25px;
+}
+
+.format-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #c4a8f0;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+}
+
+.format-cards {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #18274e;
+  padding: 20px;
+  border-radius: 15px;
+  width: 130px;
+  height: 100px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #c4a8f0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0px;
+}
+
+.card-detail {
+  font-size: 1rem;
+  color: white;
+}
+
+.card-title i {
+  color: #c4a8f0;
+  font-size: 1.2rem;
+}
+
+/* Prize Distribution Section Styling */
+.prize-distribution {
+  width: 100%;
+  margin-top: 40px;
+  padding-top: 20px;
+  color: white;
+  font-family: Arial, sans-serif;
+  border-top: 1px solid #c4a8f0;
+}
+
+.prize-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #c4a8f0;
+  text-transform: uppercase;
+  padding-top: 10px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #c4a8f0;
+  padding-bottom: 5px;
+}
+
+.prize-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.prize-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #1c2b4e;
+}
+
+.prize-position {
+  color: #c4a8f0;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.prize-amount {
+  color: white;
+  font-size: 1rem;
+}
+

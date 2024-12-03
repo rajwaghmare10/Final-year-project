@@ -1,0 +1,28 @@
+.tournament-content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 30px;
+    margin-top: 8px;
+    transition: margin-left 0.3s ease;
+    background-color: rgb(12, 22, 63);
+}
+
+.tournament-content h2{
+    align-items: center;
+    color: white;
+}
+
+.sidebar-open .all-tournament{
+    margin-left: 10px;
+}
+
+.all-tournament{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 60px;
+}
+
+.sidebar-open{
+    margin-left: 200px;
+}

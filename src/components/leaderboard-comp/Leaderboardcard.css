@@ -1,0 +1,32 @@
+.lb-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+    background: rgb(149, 14, 149);
+    padding: 11px 15px;
+    border-radius: 15px;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.lb-card .rank {
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+.name-title{
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+.lb-card .name-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.lb-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+}

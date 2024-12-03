@@ -1,0 +1,51 @@
+.how-to-join-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 20px;
+    color: #ffffff;
+    border-radius: 15px;
+  }
+  
+  .how-to-join-container h2 {
+    font-size: 2rem;
+    color: #c4a8f0;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .how-to-join-container p {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .steps {
+    margin-top: 20px;
+  }
+  
+  .step {
+    background-color: #18274e;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .step h3 {
+    color: #c4a8f0;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .step p {
+    color: #ffffff;
+    font-size: 1rem;
+  }
+  
+  .note {
+    font-size: 0.9rem;
+    color: #c4a8f0;
+    text-align: center;
+    margin-top: 20px;
+  }
+  

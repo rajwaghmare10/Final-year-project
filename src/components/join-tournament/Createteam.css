@@ -1,0 +1,104 @@
+/* Container Styling */
+.createTeam-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal Content Styling */
+.createTeam-content {
+  width: 600px;
+  background: #1a1a2e;
+  color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.close-btn:hover {
+  color: #f00;
+  transform: scale(1.1);
+}
+
+/* Title Styling */
+.createTeam-title h3 {
+  margin: 0;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #6e6af0;
+}
+
+/* Form Section */
+.createTeam-section form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0px 10px;
+  margin-top: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}   
+
+.input-group input {
+  border: 2px solid #6e6af0;
+  border-radius: 8px;
+  background-color: #12122b;
+  color: #fff;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input::placeholder {
+  color: #aaa;
+}
+
+.input-group input:focus {
+  border-color: #5551ca;
+}
+
+/* Submit Button */
+.submit-btn-container {
+  grid-column: 1 / -1;
+  text-align: center;
+
+}
+
+.createTeam-btn {
+  width: 50%;
+  padding: 12px;
+  background-color: #6e6af0;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.createTeam-btn:hover {
+  background-color: #5551ca;
+  transform: translateY(-2px);
+}

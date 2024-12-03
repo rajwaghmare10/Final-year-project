@@ -1,0 +1,113 @@
+/* Container Styling */
+.joinTeam-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal Content Styling */
+.joinTeam-content {
+  width: 400px;
+  background: #1a1a2e;
+  color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.close-btn:hover {
+  color: #f00;
+  transform: scale(1.1);
+}
+
+/* Title Styling */
+.jointeam-title h3 {
+  margin: 0;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #6e6af0;
+}
+
+/* Form Section */
+.jointeam-section form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  gap: 15px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  color: #aaa;
+  font-weight:bold;
+}
+
+.input-group input {
+  padding: 10px;
+  border: 2px solid #6e6af0;
+  border-radius: 8px;
+  background-color: #12122b;
+  color: #fff;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input::placeholder {
+  color: #aaa;
+}
+
+.input-group input:focus {
+  border-color: #5551ca;
+}
+
+/* Submit Button */
+.jointeam-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.joinTeam-btn {
+  width: 80%;
+  padding: 12px;
+  background-color: #6e6af0;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.joinTeam-btn:hover {
+  background-color: #5551ca;
+  transform: translateY(-2px);
+}

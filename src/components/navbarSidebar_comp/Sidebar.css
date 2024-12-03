@@ -1,0 +1,71 @@
+/* Sidebar container */
+.sidebar {
+    position: fixed;
+    left: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    transition: width 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+/* Open and closed states */
+.sidebar.open {
+    width: 200px; /* Full sidebar width */
+   
+}
+
+.sidebar.closed {
+    width: 80px; /* Compact sidebar width */
+    color: black;
+    background-color: white;
+}
+
+/* Sidebar items */
+.sidebar-items {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.sidebar-items li {
+    display: flex;
+    align-items: center;
+    padding: 18px 30px;
+    font-size: 1.1em;
+    font-weight: 500;   
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid black  ;
+}
+
+.sidebar-items li a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.sidebar-items li i {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.sidebar-items li:hover {
+    background-color: #333845;
+}
+
+/* Handle hidden text in closed state */
+.sidebar.closed .sidebar-items li {
+    justify-content: center;
+}
+
+.sidebar.closed .sidebar-items li i {
+    margin-right: 0;
+}
+
+.sidebar.closed .sidebar-items li a {
+    justify-content: center;
+}
