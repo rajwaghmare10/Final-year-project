@@ -1,93 +1,128 @@
-    /* Navbar Container */
-    .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 15px 15px;
-        border-bottom: 1px solid black;
-        background-color: #fff;
-        z-index: 1000;
-    }
+/* Navbar Container */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 15px;
+    border-bottom: 1px solid black;
+    background-color: #fff;
+    z-index: 1000;
+}
 
-    .navbar::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 85%;
-        height: 100%;
-        box-shadow: 0 10px 0px rgba(0, 0, 0, 0.5);
-        pointer-events: none;
-        
-    }
+.navbar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 85%;
+    height: 100%;
+    box-shadow: 0 10px 0px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
 
-    /* Logo Section */
-    .logo {
-        width: 17%;
-        display: flex;
-        align-items: center;
-        font-size: 1.2em;
-        padding-left: 15px;
-    }
+/* Logo Section */
+.logo {
+    width: 17%;
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    padding-left: 15px;
+}
 
-    .logo button {
-        margin-right: 15px;
-        border: none;
-        background-color: transparent;
-        cursor: pointer;
-    }
+.logo button {
+    margin-right: 15px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
 
-    /* Main Section to Hold Search and Login Button */
-    .part {
-        display: flex;
-        align-items: center;
-        width: 75%;
-        justify-content: space-between;
-    }
+/* Main Section to Hold Search and Login Button */
+.part {
+    display: flex;
+    align-items: center;
+    width: 75%;
+    justify-content: space-between;
+}
 
-    /* Search Section */
-    .search {
-        display: flex;
-        align-items: center;
-        width: 450px;
-        /* Responsive width adjustment */
-        padding: 5px 10px;
-        border: 1px solid #ccc;
-        border-radius: 20px;
-    }
+/* Search Section */
+.search {
+    display: flex;
+    align-items: center;
+    width: 450px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: #f9f9f9;
+}
 
-    .search .search-box {
-        width: 100%;
-        border: none;
-        font-size: 1em;
-        padding-left: 10px;
-        color: #333;
-    }
+.search .search-box {
+    width: 100%;
+    border: none;
+    font-size: 1em;
+    padding-left: 10px;
+    color: #333;
+}
 
-    .search .search-box:focus {
-        outline: none;
-    }
+.search .search-box:focus {
+    outline: none;
+}
 
-    /* Login Button */
-    .lg-button {
-        margin-right: 30px;
-        padding: 10px 20px;
-        background-color: #007bff;
-        border: none;
-        color: #fff;
-        font-size: 1em;
-        border-radius: 20px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-    }
+.search i {
+    color: #999;
+    margin-left: 10px;
+    font-size: 1.2em;
+}
 
-    /* Body Padding to Prevent Overlap */
-    body {
-        padding-top: 60px;
-        /* Adjust based on navbar height */
-    }
+/* Coin and Login Section */
+.login-coin-container {
+    display: flex;
+    align-items: center;
+    gap: 27px;
+    padding-right: 28px;
+}
+
+.coin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    font-weight: bold;
+    color: #444;
+    padding: 7px 15px;
+    background-color: #f7c948;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.coin i {
+    margin-right: 8px;
+    font-size: 1.2em;
+}
+
+/* Login Button */
+.lg-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    font-size: 1em;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.lg-button:hover {
+    background-color: #0056b3;
+}
+
+/* Body Padding to Prevent Overlap */
+body {
+    padding-top: 60px;
+    /* Adjust based on navbar height */
+}

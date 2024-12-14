@@ -4,6 +4,7 @@
     padding: 20px 20px;
     color: #ffffff;
     border-radius: 15px;
+    transition: margin-left 0.3s ease;
   }
   
   .how-to-join-container h2 {

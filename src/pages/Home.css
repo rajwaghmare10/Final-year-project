@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   padding: 30px;
   margin-top: 8px;
-  transition: margin-left 0.3s ease;
+  transition: margin-left 0.5s ease;
   background-color: rgb(12, 22, 63);
 }
 

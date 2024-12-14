@@ -6,6 +6,7 @@
     background-color: rgb(122, 7, 122);
     border-radius: 20px;
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
 }
 
 .scrim-section:hover {

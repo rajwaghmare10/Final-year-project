@@ -42,27 +42,9 @@ const Leaderboard = () => {
           </>
         ) : (
           <>
-            <div className="lb-card">
-              <div className="rank">01</div>
-              <div className="name-title">
-                <div>NAME HERE</div>
-                <div>Job Title Here</div>
-              </div>
-            </div>
-            <div className="lb-card">
-              <div className="rank">02</div>
-              <div className="name-title">
-                <div>NAME HERE</div>
-                <div>Job Title Here</div>
-              </div>
-            </div>
-            <div className="lb-card">
-              <div className="rank">03</div>
-              <div className="name-title">
-                <div>NAME HERE</div>
-                <div>Job Title Here</div>
-              </div>
-            </div>
+            <LeaderboardCard/>
+            <LeaderboardCard/>
+            <LeaderboardCard/>
           </>
         )}
       </div>

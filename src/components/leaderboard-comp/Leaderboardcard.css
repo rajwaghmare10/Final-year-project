@@ -6,7 +6,6 @@
     background: rgb(149, 14, 149);
     padding: 11px 15px;
     border-radius: 15px;
-    color: white;
     font-size: 1.2rem;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
@@ -30,3 +29,14 @@
     transform: scale(1.02);
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
 }
+
+.lb-card:nth-child(1) {
+    background-color:gold;
+  }
+
+.lb-card:nth-child(2) {
+    background-color:silver;
+  }
+  .lb-card:nth-child(3) {
+    background-color:brown;
+  }
