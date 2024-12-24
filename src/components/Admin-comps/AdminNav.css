@@ -1,0 +1,99 @@
+/* Navigation Bar Container */
+.admin-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2c3e50; /* Dark Blue */
+  padding: 10px 20px;
+  font-family: Arial, sans-serif;
+  color: #ecf0f1; /* Light Text */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100; /* Ensures navbar stays on top */
+}
+
+/* Navigation Links */
+.admin-nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.admin-nav-link {
+  text-decoration: none;
+  color: #ecf0f1;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect on links */
+.admin-nav-link:hover {
+  color: #f39c12; /* Yellow hover effect */
+  text-decoration: underline;
+}
+
+/* Focus style for accessibility */
+.admin-nav-link:focus { /* Fixed selector */
+  outline: 2px solid #f39c12; /* Outline color */
+}
+
+/* Admin Profile and Logout */
+.nav-profile {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logout-btn {
+  background-color: #e74c3c; /* Red button */
+  color: #ecf0f1;
+  border: none;
+  padding: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  margin-right: 50px; /* Fixed missing semicolon */
+}
+
+.logout-btn:hover {
+  background-color: #c0392b; /* Darker red */
+}
+
+/* Focus style for logout button */
+.logout-btn:focus {
+  outline: 2px solid #c0392b;
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+  .admin-navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .admin-nav-links {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%; /* Ensure full width for small screens */
+  }
+
+  .admin-nav-link {
+    padding: 10px 0;
+    width: 100%; /* Full width for nav links */
+    text-align: left; /* Align text to left for better readability */
+  }
+
+  .nav-profile {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: space-between; /* Spread profile and logout button */
+  }
+
+  .logout-btn {
+    margin-left: auto; /* Align the logout button to the right */
+  }
+}

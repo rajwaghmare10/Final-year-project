@@ -1,0 +1,70 @@
+.admin-team-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .admin-input-group {
+    margin-bottom: 20px;
+  }
+  
+  .admin-input-group label {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  .admin-input-group input {
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 250px;
+  }
+  
+  .admin-input-group button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .admin-input-group button:hover {
+    background-color: #0056b3;
+  }
+  
+  .error-message {
+    color: red;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .admin-team-table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  
+  .admin-team-table th,
+  .admin-team-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .admin-team-table th {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .admin-team-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  

@@ -1,0 +1,54 @@
+/* Footer Container */
+.footer {
+  background: linear-gradient(to right, #000428, #004e92);
+  color: white;
+  font-family: Arial, sans-serif;
+  padding: 10px 20px;
+  margin-left: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); 
+  transition: margin-left 0.5s ease;
+}
+
+.sidebar-open {
+  margin-left: 200px; 
+}
+
+.footer-left {
+  font-size: 14px;
+  opacity: 0.8; 
+}
+
+/* Right Section */
+.footer-right {
+  display: flex;
+  gap: 15px;
+}
+
+.footer-right a {
+  color: white; 
+  font-size: 14px;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.3s ease; 
+}
+
+.footer-right a:hover {
+  opacity: 1; 
+}
+
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .footer-right {
+    margin-top: 10px; 
+    flex-wrap: wrap;
+  }
+}

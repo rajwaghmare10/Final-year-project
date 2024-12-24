@@ -14,7 +14,7 @@
 
 /* Modal Content Styling */
 .createTeam-content {
-  width: 600px;
+  width: 500px;
   background: #1a1a2e;
   color: #fff;
   padding: 20px;
@@ -49,16 +49,22 @@
 
 /* Form Section */
 .createTeam-section form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   margin-top: 20px;
 }
 
 .input-group {
   display: flex;
   flex-direction: column;
-}   
+}
+
+.input-group label {
+  font-size: 0.9rem;
+  color: #ddd;
+  margin-bottom: 5px;
+}
 
 .input-group input {
   border: 2px solid #6e6af0;
@@ -66,6 +72,7 @@
   background-color: #12122b;
   color: #fff;
   font-size: 0.9rem;
+  padding: 8px;
   outline: none;
   transition: border-color 0.3s ease;
 }
@@ -80,13 +87,11 @@
 
 /* Submit Button */
 .submit-btn-container {
-  grid-column: 1 / -1;
   text-align: center;
-
 }
 
 .createTeam-btn {
-  width: 50%;
+  width: 60%;
   padding: 12px;
   background-color: #6e6af0;
   color: #fff;
