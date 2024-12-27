@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import {
-  addTournament,
-  editTournament,
-  getTournamentById,
-  deleteTournament,
-} from '../../api/api'; // Import necessary API functions
-import './AdminTournament.css'; // Scoped CSS file
+  addScrim,
+  editScrim,
+  getScrimById,
+  deleteScrim,
+} from '../../api/api'; // Import necessary API functions for scrims
+import './AdminScrim.css'; // Scoped CSS file
 
-const AdminTournament = () => {
-  const [tournamentData, setTournamentData] = useState({
-    tournament_name: '',
+const AdminScrim = () => {
+  const [scrimData, setScrimData] = useState({
+    scrim_name: '',
     total_slots: '',
-    prizepool: '',
     start_date: '',
     end_date: '',
     map: '',
@@ -26,10 +25,9 @@ const AdminTournament = () => {
 
   // Reset form fields
   const resetForm = () => {
-    setTournamentData({
-      tournament_name: '',
+    setScrimData({
+      scrim_name: '',
       total_slots: '',
-      prizepool: '',
       start_date: '',
       end_date: '',
       map: '',
@@ -41,24 +39,24 @@ const AdminTournament = () => {
     setError(null);
   };
 
-  // Fetch tournament details for editing
-  const fetchTournamentDetails = async () => {
+  // Fetch scrim details for editing
+  const fetchScrimDetails = async () => {
     try {
-      const response = await getTournamentById(editId);
-      const tournament = response.tournament;
+      const response = await getScrimById(editId);
+      const scrim = response.scrim;
 
       // Format dates to YYYY-MM-DD
-      const formattedStartDate = tournament.start_date.split('T')[0];
-      const formattedEndDate = tournament.end_date.split('T')[0];
+      const formattedStartDate = scrim.start_date.split('T')[0];
+      const formattedEndDate = scrim.end_date.split('T')[0];
 
-      setTournamentData({
-        ...tournament,
+      setScrimData({
+        ...scrim,
         start_date: formattedStartDate,
         end_date: formattedEndDate,
       });
       setError(null);
     } catch (err) {
-      setError('Failed to fetch tournament data. Please check the ID.');
+      setError('Failed to fetch scrim data. Please check the ID.');
       resetForm();
     }
   };
@@ -75,7 +73,7 @@ const AdminTournament = () => {
   // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setTournamentData((prevData) => ({ ...prevData, [name]: value }));
+    setScrimData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   // Handle ID input change for Edit/Delete
@@ -84,74 +82,73 @@ const AdminTournament = () => {
   };
 
   // Handle form submission (Add/Edit)
-  // Handle form submission (Add/Edit)
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const dataToSubmit = {
-        ...tournamentData,
-        room_id: tournamentData.room_id.trim() === '' ? null : tournamentData.room_id.trim(),
-        room_password: tournamentData.room_password.trim() === '' ? null : tournamentData.room_password.trim(),
+        ...scrimData,
+        room_id: scrimData.room_id.trim() === '' ? null : scrimData.room_id.trim(),
+        room_password: scrimData.room_password.trim() === '' ? null : scrimData.room_password.trim(),
       };
-  
+
       if (action === 'edit') {
-        await editTournament(editId, dataToSubmit);
-        alert('Tournament updated successfully!');
+        await editScrim(editId, dataToSubmit);
+        alert('Scrim updated successfully!');
       } else if (action === 'add') {
-        await addTournament(dataToSubmit);
-        alert('Tournament added successfully!');
+        await addScrim(dataToSubmit);
+        alert('Scrim added successfully!');
       }
       resetForm();
     } catch (err) {
       console.error('Error Details:', err); // Log the error
-      setError(err.message || 'Error while submitting the tournament.');
+      setError(err.message || 'Error while submitting the scrim.');
     }
   };
 
-  // Handle tournament deletion
+  // Handle scrim deletion
   const handleDelete = async () => {
     try {
-      await deleteTournament(editId);
-      alert('Tournament deleted successfully!');
+      await deleteScrim(editId);
+      alert('Scrim deleted successfully!');
       resetForm();
     } catch (err) {
-      setError('Error while deleting the tournament. Please check the ID.');
+      setError('Error while deleting the scrim. Please check the ID.');
     }
   };
 
   return (
-    <div className="admin-tournament">
-      <h1 className="admin-tournament__title">Admin Tournament Management</h1>
+    <div className="admin-scrim">
+      <h1 className="admin-scrim__title">Admin Scrim Management</h1>
 
       {/* Action Selector */}
-      <div className="admin-tournament__action-selector">
+      <div className="admin-scrim__action-selector">
         <label htmlFor="action">Select Action:</label>
         <select id="action" value={action} onChange={handleActionChange}>
           <option value="">-- Select --</option>
-          <option value="add">Add Tournament</option>
-          <option value="edit">Edit Tournament</option>
-          <option value="delete">Delete Tournament</option>
+          <option value="add">Add Scrim</option>
+          <option value="edit">Edit Scrim</option>
+          <option value="delete">Delete Scrim</option>
         </select>
       </div>
 
       {/* ID Input for Edit/Delete */}
       {(action === 'edit' || action === 'delete') && (
-        <div className="admin-tournament__form-group">
-          <label>Tournament ID</label>
+        <div className="admin-scrim__form-group">
+          <label>Scrim ID</label>
           <input
             type="text"
             value={editId}
             onChange={handleEditIdChange}
-            placeholder="Enter Tournament ID"
+            placeholder="Enter Scrim ID"
           />
           {action === 'edit' && (
-            <button type="button" onClick={fetchTournamentDetails}>
+            <button type="button" onClick={fetchScrimDetails}>
               Fetch Details
             </button>
           )}
           {action === 'delete' && (
             <button type="button" onClick={handleDelete}>
-              Delete Tournament
+              Delete Scrim
             </button>
           )}
         </div>
@@ -160,52 +157,43 @@ const AdminTournament = () => {
       {/* Form for Add/Edit */}
       {(action === 'add' || action === 'edit') && (
         <form onSubmit={handleSubmit}>
-          <div className="admin-tournament__form-group">
-            <label>Tournament Name</label>
+          <div className="admin-scrim__form-group">
+            <label>Scrim Name</label>
             <input
               type="text"
-              name="tournament_name"
-              value={tournamentData.tournament_name}
+              name="scrim_name"
+              value={scrimData.scrim_name}
               onChange={handleChange}
             />
           </div>
-          <div className="admin-tournament__form-group">
+          <div className="admin-scrim__form-group">
             <label>Total Slots</label>
             <input
               type="number"
               name="total_slots"
-              value={tournamentData.total_slots}
+              value={scrimData.total_slots}
               onChange={handleChange}
             />
           </div>
-          <div className="admin-tournament__form-group">
-            <label>Prize Pool</label>
-            <input
-              type="text"
-              name="prizepool"
-              value={tournamentData.prizepool}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="admin-tournament__form-group">
+          <div className="admin-scrim__form-group">
             <label>Start Date</label>
             <input
               type="date"
               name="start_date"
-              value={tournamentData.start_date}
+              value={scrimData.start_date}
               onChange={handleChange}
             />
           </div>
-          <div className="admin-tournament__form-group">
+          <div className="admin-scrim__form-group">
             <label>End Date</label>
             <input
               type="date"
               name="end_date"
-              value={tournamentData.end_date}
+              value={scrimData.end_date}
               onChange={handleChange}
             />
           </div>
-          <div className="admin-tournament__form-group">
+          <div className="admin-scrim__form-group">
             <label>Map</label>
             <div className="radio-group">
               {['Erangel', 'Miramar', 'Sanhok', 'Vikendi'].map((map) => (
@@ -214,7 +202,7 @@ const AdminTournament = () => {
                     type="radio"
                     name="map"
                     value={map}
-                    checked={tournamentData.map === map}
+                    checked={scrimData.map === map}
                     onChange={handleChange}
                   />
                   {map}
@@ -222,7 +210,7 @@ const AdminTournament = () => {
               ))}
             </div>
           </div>
-          <div className="admin-tournament__form-group">
+          <div className="admin-scrim__form-group">
             <label>Game Mode</label>
             <div className="radio-group">
               {['Solo', 'Duo', 'Squad'].map((mode) => (
@@ -231,7 +219,7 @@ const AdminTournament = () => {
                     type="radio"
                     name="game_mode"
                     value={mode}
-                    checked={tournamentData.game_mode === mode}
+                    checked={scrimData.game_mode === mode}
                     onChange={handleChange}
                   />
                   {mode}
@@ -239,33 +227,33 @@ const AdminTournament = () => {
               ))}
             </div>
           </div>
-          <div className="admin-tournament__form-group">
+          <div className="admin-scrim__form-group">
             <label>Room ID</label>
             <input
               type="text"
               name="room_id"
-              value={tournamentData.room_id}
+              value={scrimData.room_id}
               onChange={handleChange}
             />
           </div>
-          <div className="admin-tournament__form-group">
+          <div className="admin-scrim__form-group">
             <label>Room Password</label>
             <input
               type="text"
               name="room_password"
-              value={tournamentData.room_password}
+              value={scrimData.room_password}
               onChange={handleChange}
             />
           </div>
           <button type="submit">
-            {action === 'edit' ? 'Update Tournament' : 'Add Tournament'}
+            {action === 'edit' ? 'Update Scrim' : 'Add Scrim'}
           </button>
         </form>
       )}
 
-      {error && <p className="admin-tournament__error">{error}</p>}
+      {error && <p className="admin-scrim__error">{error}</p>}
     </div>
   );
 };
 
-export default AdminTournament;
+export default AdminScrim;

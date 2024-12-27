@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import AdminNav from "../../components/Admin-comps/AdminNav";
 import "./AdminHome.css";
-import { getAllTournaments } from "../../api/api";
+import { getAllTournaments ,getAllTeams } from "../../api/api";
 
 const AdminHome = () => {
   const [tournaments, setTournaments] = useState([]);
+  const [teams, setteams] = useState([])
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -13,6 +14,8 @@ const AdminHome = () => {
       try {
         const response = await getAllTournaments();
         setTournaments(response.tournaments);
+        const team_response = await getAllTeams();
+        setteams(team_response.teams);
       } catch (err) {
         console.error("Error fetching tournaments:", err);
         setError("Failed to fetch tournaments");
@@ -35,7 +38,7 @@ const AdminHome = () => {
           </div>
           <div className="admin-card">
             <h3>Total Teams</h3>
-            <p>25</p>
+            <p>{teams.length}</p>
           </div>
           <div className="admin-card">
             <h3>Total Users</h3>

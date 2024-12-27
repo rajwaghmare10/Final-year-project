@@ -16,6 +16,8 @@ import AdminTournament from './Admin/AdminTournament';
 import AdminNav from '../components/Admin-comps/AdminNav';
 import Footer from '../components/navbarSidebar_comp/Footer';
 import AdminTeam from './Admin/AdminTeam';
+import AdminScrim from './Admin/AdminScrim';
+
 const Main = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
@@ -116,6 +118,15 @@ const Main = () => {
         <div>
           <AdminNav /> {/* Admin navbar only */}
           <AdminTeam />
+        </div>
+      ),
+    },
+    {
+      path: '/admin/scrims',
+      element: (
+        <div>
+          <AdminNav /> {/* Admin navbar only */}
+          <AdminScrim />
         </div>
       ),
     },
