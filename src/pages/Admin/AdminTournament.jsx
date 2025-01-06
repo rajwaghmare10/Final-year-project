@@ -43,18 +43,37 @@ const AdminTournament = () => {
 
   // Fetch tournament details for editing
   const fetchTournamentDetails = async () => {
+    // Reset tournamentData to clear previous values
+    setTournamentData({
+      tournament_name: '',
+      total_slots: '',
+      start_date: '',
+      end_date: '',
+      map: '',
+      room_id: '',
+      room_password: '',
+      prizepool: '',
+      game_mode: '',
+    });
+  
     try {
       const response = await getTournamentById(editId);
       const tournament = response.tournament;
-
+  
       // Format dates to YYYY-MM-DD
-      const formattedStartDate = tournament.start_date.split('T')[0];
-      const formattedEndDate = tournament.end_date.split('T')[0];
-
+      const formattedStartDate = tournament.start_date?.split('T')[0] || '';
+      const formattedEndDate = tournament.end_date?.split('T')[0] || '';
+  
       setTournamentData({
-        ...tournament,
+        tournament_name: tournament.tournament_name || '',
+        total_slots: tournament.total_slots || '',
         start_date: formattedStartDate,
         end_date: formattedEndDate,
+        map: tournament.map || '',
+        room_id: tournament.room_id || '', // Default to empty if not available
+        room_password: tournament.room_password || '', // Default to empty if not available
+        prizepool: tournament.prizepool || '',
+        game_mode: tournament.game_mode || '',
       });
       setError(null);
     } catch (err) {
@@ -62,6 +81,7 @@ const AdminTournament = () => {
       resetForm();
     }
   };
+  
 
   // Handle action change (Add/Edit/Delete)
   const handleActionChange = (e) => {
@@ -83,7 +103,6 @@ const AdminTournament = () => {
     setEditId(e.target.value);
   };
 
-  // Handle form submission (Add/Edit)
   // Handle form submission (Add/Edit)
   const handleSubmit = async (e) => {
     e.preventDefault();

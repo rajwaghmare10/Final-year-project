@@ -45,6 +45,7 @@ const AdminTeam = () => {
         setError('');
       }
     } catch (err) {
+      resetForm();
       setError('Failed to fetch teams. Please check the Tournament ID.');
     }
   };

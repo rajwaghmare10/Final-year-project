@@ -2,17 +2,6 @@ import axios from 'axios';
 
 const API_BASE_URL = 'http://localhost:4000'; // Base URL for your API
 
-// Fetch all tournaments
-export const getAllTournaments = async () => {
-  try {
-    const response = await axios.get(`${API_BASE_URL}/tournament/alltournament`);
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching tournaments:', error.response?.data?.message || error.message);
-    throw error;
-  }
-};
-
 // Fetch all teams
 export const getAllTeams = async () => {
   try {
@@ -24,6 +13,49 @@ export const getAllTeams = async () => {
   }
 };
 
+//fetch all users
+export const getAllUsers = async() =>{
+  try {
+    const response = await axios.get(`${API_BASE_URL}/user/allusers`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching users',error.response?.data?.message || error.message);
+    throw error;  }
+}
+
+//fetch all team registration
+export const getAllRegistration = async() =>{
+  try {
+    const response = await axios.get(`${API_BASE_URL}/teams/allregistration`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching data',error.response?.data?.message || error.message);
+    throw error;  }
+}
+
+// fetch user by id
+export const getUserById = async (id) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/user/${id}`);
+    return response.data ;
+  } catch (error) {
+    console.error('Error fetching user:', error.response?.data?.message || error.message);
+    throw error;
+  }
+
+}
+
+//update user
+export const updateUser = async (bgmiID, updateData) => {
+  try {
+    const response = await axios.put(`${API_BASE_URL}/user/${bgmiID}`, updateData);
+    return response.data;
+  } catch (error) {
+    console.error('Error updating user:', error.response?.data?.message || error.message);
+    throw error;
+  }
+};
+
 // Fetch tournament by ID
 export const getTournamentById = async (id) => {
   try {
@@ -31,6 +63,17 @@ export const getTournamentById = async (id) => {
     return response.data;
   } catch (error) {
     console.error('Error fetching tournament:', error.response?.data?.message || error.message);
+    throw error;
+  }
+};
+
+// Fetch all tournaments
+export const getAllTournaments = async () => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/tournament/alltournament`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching tournaments:', error.response?.data?.message || error.message);
     throw error;
   }
 };
@@ -79,6 +122,7 @@ export const getTeamsByTournamentId = async (tournamentId) => {
   }
 };
 
+//adding coins to team members
 export const addCoinsToTeamLeader = async (data) => {
   try {
     const response = await axios.post(`${API_BASE_URL}/teams/addcoins`, data);
@@ -88,8 +132,6 @@ export const addCoinsToTeamLeader = async (data) => {
     throw error;
   }
 };
-
-
 
 // Fetch all scrims
 export const getAllScrims = async () => {

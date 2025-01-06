@@ -11,12 +11,13 @@ import Scrim from './Scrim';
 import LoginPage from './loginAndRegister/LoginPage';
 import Register from './loginAndRegister/Register';
 import Leaderboard from './Leaderboard';
-import AdminHome from './Admin/AdminHome';
-import AdminTournament from './Admin/AdminTournament';
 import AdminNav from '../components/Admin-comps/AdminNav';
 import Footer from '../components/navbarSidebar_comp/Footer';
+import AdminHome from './Admin/AdminHome';
+import AdminTournament from './Admin/AdminTournament';
 import AdminTeam from './Admin/AdminTeam';
 import AdminScrim from './Admin/AdminScrim';
+import AdminUser from './Admin/AdminUser';
 
 const Main = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -118,6 +119,15 @@ const Main = () => {
         <div>
           <AdminNav /> {/* Admin navbar only */}
           <AdminTeam />
+        </div>
+      ),
+    },
+    {
+      path: '/admin/user',
+      element: (
+        <div>
+          <AdminNav /> {/* Admin navbar only */}
+          <AdminUser />
         </div>
       ),
     },

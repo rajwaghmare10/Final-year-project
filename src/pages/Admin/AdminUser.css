@@ -1,0 +1,98 @@
+.admin-user-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  .admin-user-container h1 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+  }
+  
+  .admin-user__form-group {
+    margin-bottom: 20px;
+  }
+  
+  .admin-user__form-group label {
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+  }
+  
+  .admin-user__form-group input,
+  .admin-user__form-group select,
+  .admin-user__form-group button {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .admin-user__form-group input:focus,
+  .admin-user__form-group select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+  }
+  
+  .admin-user__form-group button {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-user__form-group button:hover {
+    background-color: #0056b3;
+  }
+  
+  .radio-group {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .radio-group label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+    margin-right: 15px;
+  }
+  
+  .radio-group input {
+    margin-right: 8px;
+  }
+  
+  .error-message {
+    color: #d9534f;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .success-message {
+    color: #5cb85c;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .admin-user__form-group:last-child button {
+    margin-top: 20px;
+    padding: 12px;
+    font-size: 16px;
+  }
+  

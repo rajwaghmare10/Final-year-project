@@ -17,7 +17,7 @@ const AdminNav = () => {
         <NavLink to="/admin/teams" className="admin-nav-link">
           Teams
         </NavLink>
-        <NavLink to="/admin/users" className="admin-nav-link">
+        <NavLink to="/admin/user" className="admin-nav-link">
           Users
         </NavLink>
         <NavLink to="/admin/scrims" className="admin-nav-link">

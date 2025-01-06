@@ -1,30 +1,39 @@
 import React, { useEffect, useState } from "react";
 import AdminNav from "../../components/Admin-comps/AdminNav";
 import "./AdminHome.css";
-import { getAllTournaments ,getAllTeams } from "../../api/api";
+import { getAllTournaments, getAllTeams, getAllUsers, getAllRegistration } from "../../api/api";
 
 const AdminHome = () => {
   const [tournaments, setTournaments] = useState([]);
-  const [teams, setteams] = useState([])
+  const [teams, setTeams] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [registrations, setRegistrations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchTournaments = async () => {
+    const fetchData = async () => {
       try {
-        const response = await getAllTournaments();
-        setTournaments(response.tournaments);
-        const team_response = await getAllTeams();
-        setteams(team_response.teams);
+        const [tournamentResponse, teamResponse, userResponse, registrationResponse] = await Promise.all([
+          getAllTournaments(),
+          getAllTeams(),
+          getAllUsers(),
+          getAllRegistration(),
+        ]);
+
+        setTournaments(tournamentResponse.tournaments);
+        setTeams(teamResponse.teams);
+        setUsers(userResponse.users);
+        setRegistrations(registrationResponse.registrations);
       } catch (err) {
-        console.error("Error fetching tournaments:", err);
-        setError("Failed to fetch tournaments");
+        console.error("Error fetching data:", err);
+        setError(err.message || "Failed to fetch data");
       } finally {
         setLoading(false);
       }
     };
 
-    fetchTournaments();
+    fetchData();
   }, []);
 
   return (
@@ -42,11 +51,11 @@ const AdminHome = () => {
           </div>
           <div className="admin-card">
             <h3>Total Users</h3>
-            <p>300</p>
+            <p>{users.length}</p>
           </div>
           <div className="admin-card">
             <h3>Registrations</h3>
-            <p>150</p>
+            <p>{registrations.length}</p>
           </div>
         </div>
 

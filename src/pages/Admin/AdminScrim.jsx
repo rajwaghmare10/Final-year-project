@@ -4,7 +4,7 @@ import {
   editScrim,
   getScrimById,
   deleteScrim,
-} from '../../api/api'; // Import necessary API functions for scrims
+} from '../../api/api'; // Import necessary API functions
 import './AdminScrim.css'; // Scoped CSS file
 
 const AdminScrim = () => {
@@ -41,18 +41,35 @@ const AdminScrim = () => {
 
   // Fetch scrim details for editing
   const fetchScrimDetails = async () => {
+    // Reset scrimData to clear previous values
+    setScrimData({
+      scrim_name: '',
+      total_slots: '',
+      start_date: '',
+      end_date: '',
+      map: '',
+      room_id: '',
+      room_password: '',
+      game_mode: '',
+    });
+  
     try {
       const response = await getScrimById(editId);
       const scrim = response.scrim;
-
+  
       // Format dates to YYYY-MM-DD
-      const formattedStartDate = scrim.start_date.split('T')[0];
-      const formattedEndDate = scrim.end_date.split('T')[0];
-
+      const formattedStartDate = scrim.start_date?.split('T')[0] || '';
+      const formattedEndDate = scrim.end_date?.split('T')[0] || '';
+  
       setScrimData({
-        ...scrim,
+        scrim_name: scrim.scrim_name || '',
+        total_slots: scrim.total_slots || '',
         start_date: formattedStartDate,
         end_date: formattedEndDate,
+        map: scrim.map || '',
+        room_id: scrim.room_id || '', // Set to an empty string if not available
+        room_password: scrim.room_password || '', // Set to an empty string if not available
+        game_mode: scrim.game_mode || '',
       });
       setError(null);
     } catch (err) {
@@ -60,6 +77,7 @@ const AdminScrim = () => {
       resetForm();
     }
   };
+  
 
   // Handle action change (Add/Edit/Delete)
   const handleActionChange = (e) => {
@@ -87,10 +105,10 @@ const AdminScrim = () => {
     try {
       const dataToSubmit = {
         ...scrimData,
-        room_id: scrimData.room_id.trim() === '' ? null : scrimData.room_id.trim(),
-        room_password: scrimData.room_password.trim() === '' ? null : scrimData.room_password.trim(),
+        room_id: scrimData.room_id?.trim() || null, // Safeguard with optional chaining
+        room_password: scrimData.room_password?.trim() || null, // Safeguard with optional chaining
       };
-
+  
       if (action === 'edit') {
         await editScrim(editId, dataToSubmit);
         alert('Scrim updated successfully!');
@@ -104,7 +122,7 @@ const AdminScrim = () => {
       setError(err.message || 'Error while submitting the scrim.');
     }
   };
-
+  
   // Handle scrim deletion
   const handleDelete = async () => {
     try {
