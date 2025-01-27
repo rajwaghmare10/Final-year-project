@@ -1,13 +1,13 @@
 import React from 'react'
 import './Leaderboardcard.css'
 
-const LeaderboardCard = () => {
+const LeaderboardCard = ({leaderboard ,index}) => {
     return (
         <div className="lb-card">
-            <div className="rank">01</div>
+            <div className="rank">{index+1}</div>
             <div className="name-title">
-                <div>User Name</div>
-                <div>500 points</div>
+                <div>{leaderboard.username}</div>
+                <div>{leaderboard.total_coins}</div>
             </div>
         </div>
     )

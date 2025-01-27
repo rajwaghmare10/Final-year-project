@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { getUserById, updateUser } from '../../api/api';
+import { getUserById, updateUser  } from '../../api/api';
+import { useForm } from 'react-hook-form'; // Import React Hook Form
+import * as yup from 'yup'; // Import Yup for validation
+import { yupResolver } from '@hookform/resolvers/yup';
 import './AdminUser.css';
 
-const AdminUser = () => {
+const AdminUser  = () => {
   const [editId, setEditId] = useState('');
   const [error, setError] = useState(null);
-  const [successMessage, setSuccessMessage] = useState(null);
 
   const [userDetails, setUserDetails] = useState({
     bgmi_id: '',
@@ -15,6 +17,19 @@ const AdminUser = () => {
     coins: '',
     created_at: '',
     status: '',
+  });
+
+  const validationSchema = yup.object({
+    bgmi_id: yup.number().required('BGMI ID is required'),
+    username: yup.string().required('Username is required'),
+    email: yup.string().email('Invalid email').required('Email is required'),
+    role: yup.string().required('Role is required'),
+    coins: yup.number().required('Coins is required'),
+    status: yup.string().required('Status is required'),
+  });
+
+  const { register, handleSubmit, setValue, formState: { errors } } = useForm({
+    resolver: yupResolver(validationSchema),
   });
 
   const resetForm = () => {
@@ -37,10 +52,10 @@ const AdminUser = () => {
       ...prevState,
       [name]: value,
     }));
+    setValue(name, value); // Update the form value when input changes
   };
 
   const fetchUserDetails = async (e) => {
-    setSuccessMessage(null);
     e.preventDefault();
     if (!editId) {
       setError('Please enter a valid BGMI ID.');
@@ -51,7 +66,14 @@ const AdminUser = () => {
       const { user } = await getUserById(editId);
 
       const formattedJoiningDate = user.created_at.split('T')[0];
-      setUserDetails({ ...user, created_at: formattedJoiningDate });
+      const updatedUserDetails = { ...user, created_at: formattedJoiningDate };
+      setUserDetails(updatedUserDetails);
+
+      // Set form values using setValue
+      Object.keys(updatedUserDetails).forEach((key) => {
+        setValue(key, updatedUserDetails[key]);
+      });
+
       setError(null);
     } catch (err) {
       setError('Failed to fetch user data. Please check the ID.');
@@ -59,12 +81,10 @@ const AdminUser = () => {
     }
   };
 
-  const updateUserDetails = async (e) => {
-    e.preventDefault();
-
+  const onSubmit = async (data) => {
     try {
-      await updateUser(editId, userDetails);
-      setSuccessMessage('User details updated successfully.');
+      await updateUser (editId, data);
+      alert('User  profile updated successfully.');
       setError(null);
       resetForm();
     } catch (err) {
@@ -76,7 +96,7 @@ const AdminUser = () => {
     <div className="admin-user-container">
       <h1>Admin User Management</h1>
 
-      <form onSubmit={fetchUserDetails}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="admin-user__form-group">
           <label>BGMI ID</label>
           <input
@@ -85,32 +105,33 @@ const AdminUser = () => {
             value={editId}
             onChange={(e) => setEditId(e.target.value)}
           />
-          <button type="submit">Fetch Details</button>
+          <button type="button" onClick={fetchUserDetails}>Fetch Details</button>
         </div>
 
         {error && <p className="error-message">{error}</p>}
-        {successMessage && <p className="success-message">{successMessage}</p>}
 
         <div className="admin-user__form-group">
           <label>Username</label>
           <input
             type="text"
             placeholder="Enter Username"
-            name="username"
+            {...register('username')}
             value={userDetails.username}
             onChange={handleInputChange}
           />
+          {errors.username && <p className="error-message">{errors.username.message}</p>}
         </div>
 
-        <div className="admin-user__form-group">
+        < div className="admin-user__form-group">
           <label>Email ID</label>
           <input
             type="text"
             placeholder="Enter Email ID"
-            name="email"
+            {...register('email')}
             value={userDetails.email}
             onChange={handleInputChange}
           />
+          {errors.email && <p className="error-message">{errors.email.message}</p>}
         </div>
 
         <div className="admin-user__form-group">
@@ -120,7 +141,7 @@ const AdminUser = () => {
               <label key={role}>
                 <input
                   type="radio"
-                  name="role"
+                  {...register('role')}
                   value={role}
                   checked={userDetails.role === role}
                   onChange={handleInputChange}
@@ -129,6 +150,7 @@ const AdminUser = () => {
               </label>
             ))}
           </div>
+          {errors.role && <p className="error-message">{errors.role.message}</p>}
         </div>
 
         <div className="admin-user__form-group">
@@ -136,19 +158,21 @@ const AdminUser = () => {
           <input
             type="number"
             placeholder="Enter Coins"
-            name="coins"
+            {...register('coins')}
             value={userDetails.coins}
             onChange={handleInputChange}
           />
+          {errors.coins && <p className="error-message">{errors.coins.message}</p>}
         </div>
 
         <div className="admin-user__form-group">
           <label>Joining Date</label>
           <input
             type="date"
-            name="created_at"
+            name='created_at'
             value={userDetails.created_at}
             onChange={handleInputChange}
+            disabled
           />
         </div>
 
@@ -159,7 +183,7 @@ const AdminUser = () => {
               <label key={status}>
                 <input
                   type="radio"
-                  name="status"
+                  {...register('status')}
                   value={status}
                   checked={userDetails.status === status}
                   onChange={handleInputChange}
@@ -168,9 +192,10 @@ const AdminUser = () => {
               </label>
             ))}
           </div>
+          {errors.status && <p className="error-message">{errors.status.message}</p>}
         </div>
 
-        <button type="submit" onClick={updateUserDetails}>
+        <button type="submit">
           Update User
         </button>
       </form>
@@ -178,4 +203,4 @@ const AdminUser = () => {
   );
 };
 
-export default AdminUser;
+export default AdminUser ;

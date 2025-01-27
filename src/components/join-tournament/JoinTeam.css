@@ -111,3 +111,30 @@
   background-color: #5551ca;
   transform: translateY(-2px);
 }
+.success-message {
+  text-align: center;
+  padding: 20px;
+}
+
+.success-message p {
+  color: green;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.green-tick {
+  color: green;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.jointeam-title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.message {
+  color: red;
+  text-align: center;
+  margin-bottom: 10px;
+}

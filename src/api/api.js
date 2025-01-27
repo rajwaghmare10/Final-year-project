@@ -2,6 +2,28 @@ import axios from 'axios';
 
 const API_BASE_URL = 'http://localhost:4000'; // Base URL for your API
 
+//login user
+export const login = async ({email, password}) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/user/login`, { email, password });
+    return response.data;
+  } catch (error) {
+    console.error('Error during login request:', error.response?.data || error.message);
+  }
+};
+
+//register user 
+export const register = async (userInfo) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/user/register`, userInfo);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+
 // Fetch all teams
 export const getAllTeams = async () => {
   try {
@@ -14,30 +36,32 @@ export const getAllTeams = async () => {
 };
 
 //fetch all users
-export const getAllUsers = async() =>{
+export const getAllUsers = async () => {
   try {
     const response = await axios.get(`${API_BASE_URL}/user/allusers`);
     return response.data;
   } catch (error) {
-    console.error('Error fetching users',error.response?.data?.message || error.message);
-    throw error;  }
+    console.error('Error fetching users', error.response?.data?.message || error.message);
+    throw error;
+  }
 }
 
 //fetch all team registration
-export const getAllRegistration = async() =>{
+export const getAllRegistration = async () => {
   try {
     const response = await axios.get(`${API_BASE_URL}/teams/allregistration`);
     return response.data;
   } catch (error) {
-    console.error('Error fetching data',error.response?.data?.message || error.message);
-    throw error;  }
+    console.error('Error fetching data', error.response?.data?.message || error.message);
+    throw error;
+  }
 }
 
 // fetch user by id
 export const getUserById = async (id) => {
   try {
     const response = await axios.get(`${API_BASE_URL}/user/${id}`);
-    return response.data ;
+    return response.data;
   } catch (error) {
     console.error('Error fetching user:', error.response?.data?.message || error.message);
     throw error;
@@ -144,6 +168,7 @@ export const getAllScrims = async () => {
   }
 };
 
+
 // Fetch scrim by ID
 export const getScrimById = async (id) => {
   try {
@@ -187,4 +212,57 @@ export const deleteScrim = async (id) => {
     throw error;
   }
 };
+
+export const getLeaderboardData = async (type) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/leaderboard?type=${type}`);
+    return response.data;
+  }
+  catch (error) {
+    console.error('Error fetching leaderboard data:', error.response?.data?.message || error.message);
+    throw error;
+  }
+};
+
+//create a team
+export const createTeam = async (teamData) => {
+  try {
+    console.log(teamData);
+    const response = await axios.post(`${API_BASE_URL}/teams/create`, teamData);
+    return response.data;
+  } catch (error) {
+    console.error('Error creating team:', error.response?.data?.message || error.message);
+    throw error;
+  }
+};
+
+export const getTeamMembers = async (id) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/teams/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching team:', error.response?.data?.message || error.message);
+    throw error;
+  }
+};
+
+export const registerTeam = async (teamData) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/teams/register`, teamData);
+    return response.data;
+  } catch (error) {
+    console.error('Error registering team:', error.response?.data?.message || error.message);
+    throw error;
+  }
+};
+
+export const joinTeam = async (teamData) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/teams/join`, teamData);
+    return response.data;
+  } catch (error) {
+    console.error('Error joining team:', error.response?.data?.message || error.message);
+    throw error;
+  }
+}
 

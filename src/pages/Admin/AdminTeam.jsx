@@ -10,12 +10,10 @@ const AdminTeam = () => {
   const [coins, setCoins] = useState('');
   const [teams, setTeams] = useState([]);
   const [error, setError] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
 
   // Reset form and state
   const resetForm = () => {
     setError('');
-    setSuccessMessage('');
     setTournamentId('');
     setTeamId('');
     setLeaderId('');
@@ -57,20 +55,22 @@ const AdminTeam = () => {
       team_id: teamId.trim(),
       coins: Number(coins), // Ensure coins is sent as a number
     };
-  
-    console.log('Payload:', payload); // Debugging log
-  
+
     try {
       const response = await addCoinsToTeamLeader(payload);
-      setSuccessMessage(response.message || 'Coins added successfully.');
-      setError('');
+      if (response) {
+        alert("Coins added successfully");
+        resetForm();
+      }
+      else {
+        setError("Failed to add coins");
+      }
+
     } catch (err) {
       console.error('Error in addCoins:', err);
       setError(err.response?.data?.message || 'An error occurred. Please try again.');
     }
   };
-  
-
 
 
   return (
@@ -163,7 +163,6 @@ const AdminTeam = () => {
           </div>
           <button onClick={addCoins}>Add Coins</button>
           {error && <p className="error-message">{error}</p>}
-          {successMessage && <p className="success-message">{successMessage}</p>}
         </div>
       )}
     </div>

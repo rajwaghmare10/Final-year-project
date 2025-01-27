@@ -3,10 +3,9 @@ import './jointournament.css';
 import JoinTeam from './JoinTeam';
 import CreateTeam from './CreateTeam';
 
-const JoinTournament = ({ closeJoinTour }) => {
+const JoinTournament = ({ closeJoinTour , id , type ,gameMode}) => {
   const [showJoinTeam, setShowJoinTeam] = useState(false);
   const [showCreateTeam, setShowCreateTeam] = useState(false);
-
   const handleJoinTeamToggle = () => {
     setShowJoinTeam((prev) => !prev);
   };
@@ -32,8 +31,8 @@ const JoinTournament = ({ closeJoinTour }) => {
         </button>
 
         {/* Render Modals Conditionally */}
-        {showCreateTeam && <CreateTeam closeCreateTeam={handleCreateTeamToggle} />}
-        {showJoinTeam && <JoinTeam closeJoinTeam={handleJoinTeamToggle} />}
+        {showCreateTeam && <CreateTeam closeCreateTeam={handleCreateTeamToggle} id ={id} type ={type} gameMode ={gameMode}/>}
+        {showJoinTeam && <JoinTeam closeJoinTeam={handleJoinTeamToggle}  id ={id} type ={type} gameMode ={gameMode}/>}
       </div>
     </div>
   );

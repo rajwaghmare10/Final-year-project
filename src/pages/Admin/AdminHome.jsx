@@ -73,8 +73,9 @@ const AdminHome = () => {
                   <th>Name</th>
                   <th>Slots</th>
                   <th>Prize Pool</th>
-                  <th>Start Date</th>
-                  <th>End Date</th>
+                  <th>Registration Start Date</th>
+                  <th>Registration End Date</th>
+                  <th>Match Timinig</th>
                   <th>Map</th>
                   <th>Game Mode</th>
                   <th>Actions</th>
@@ -89,6 +90,7 @@ const AdminHome = () => {
                     <td>{tournament.prizepool || "-"}</td>
                     <td>{new Date(tournament.start_date).toLocaleDateString()}</td>
                     <td>{new Date(tournament.end_date).toLocaleDateString()}</td>
+                    <td>{new Date(new Date(tournament.match_timing).getTime() + 5.5 * 60 * 60 * 1000).toISOString().slice(0, 16)}</td>
                     <td>{tournament.map || "-"}</td>
                     <td>{tournament.game_mode || "-"}</td>
                     <td>

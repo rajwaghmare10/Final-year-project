@@ -20,7 +20,7 @@
   
   .admin-scrim__action-selector,
   .admin-scrim__form-group {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
   
   .admin-scrim__form-group label {
@@ -28,13 +28,13 @@
     font-weight: bold;
     display: block;
     margin-bottom: 8px;
-    color: #555;
+    color: black;
   }
   
   .admin-scrim__form-group input,
   .admin-scrim__form-group select,
   .admin-scrim__form-group button {
-    width: 100%;
+    width: 95%;
     padding: 10px;
     font-size: 14px;
     border: 1px solid #ccc;
@@ -90,7 +90,15 @@
     padding: 12px;
     font-size: 16px;
   }
+
+  .admin-scrim__form-group p{
+    color: red;
+    font-size: 14px;
+  }
   
+  .admin-scrim__banner-preview img{
+    width: 500px;
+  }
   @media (max-width: 600px) {
     .admin-scrim {
       padding: 15px;

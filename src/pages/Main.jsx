@@ -8,6 +8,7 @@ import TournamentDetail from './TournamentDetail';
 import { togglecontext } from '../context/context';
 import HowToJoin from './HowToJoin';
 import Scrim from './Scrim';
+import Setting from './Setting';
 import LoginPage from './loginAndRegister/LoginPage';
 import Register from './loginAndRegister/Register';
 import Leaderboard from './Leaderboard';
@@ -78,7 +79,17 @@ const Main = () => {
       ),
     },
     {
-      path: '/tournament/tournamentdetail',
+      path: '/settings',
+      element: (
+        <togglecontext.Provider value={isSidebarOpen}>
+          <Navbar toggleSidebar={toggleSidebar} />
+          <Setting />
+          <Footer/>
+        </togglecontext.Provider>
+      ),
+    },
+    {
+      path: '/:type/:id',
       element: (
         <togglecontext.Provider value={isSidebarOpen}>
           <Navbar toggleSidebar={toggleSidebar} />

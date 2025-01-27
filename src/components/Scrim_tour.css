@@ -33,11 +33,21 @@
     margin-top: 10px;
 }
 
-.scrim-info p {
-    padding-left: 8px;
+.scrim-name-slots {
+    width: 88%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: bold ;
     color: white;
-    font-weight: bold
+    padding-left: 7px;
 }
+
+.scrim-name-slots i {
+    color: white;
+    font-size: 14px;
+}
+
 
 .scrim-info ul {
     color: white;

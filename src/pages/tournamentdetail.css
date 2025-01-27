@@ -13,21 +13,22 @@
 }
 /* Tournament Banner Styling */
 .tournament-banner {
-  position: relative;
-  width: 95%;
-  height: 300px;
-  background-image: url('C:/final_year/my-react-app/public/images/scrims_banner2.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 20px;
-  overflow: hidden;
+  width: 100%;
+  height: 380px;
   margin-bottom: 15px;
+}
+.tournament-banner img{
+  width: 95%;
+  height: 380px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-left: 25px;
 }
 
 .join-btn {
   position: absolute;
-  bottom: 15px;
-  right: 15px;
+  bottom: 45px;
+  right: 60px;
   padding: 15px;
   background-color: #5954eb;
   color: white;
@@ -104,74 +105,6 @@
 .content-display {
   width: 100%;
   padding: 30px;
-}
-
-/* Rules Section */
-.rule-section {
-  width: 90%;
-  border-radius: 10px;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  color: #c4a8f0;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-.rule-section:hover {
-  background-color: #1a1a2e;
-}
-
-.rule-toggle {
-  background: none;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
-.arrow-icon {
-  margin-left: auto;
-  transform: rotate(0deg);
-  transition: transform 0.3s ease;
-}
-
-.show-rules .arrow-icon {
-  transform: rotate(180deg);
-}
-
-/* Expanded Rules Content */
-.rules-content {
-  padding: 15px;
-  background-color: #1a1a2e;
-  color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.4s ease;
-  border-radius: 0 0 10px 10px;
-  margin-top: 5px;
-}
-
-.show-rules .rules-content {
-  max-height: 800px;
-  opacity: 1;
-}
-
-.rules-content ul {
-  padding-left: 20px;
-  list-style-type: disc;
-  color: #c4a8f0;
-}
-
-.rules-content li {
-  margin-bottom: 8px;
-  line-height: 1.6;
 }
 
 /* Host Section */

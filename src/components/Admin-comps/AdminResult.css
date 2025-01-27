@@ -1,0 +1,120 @@
+/* AdminResult Main Container */
+.admin-result {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Title */
+  .admin-result__title {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+  }
+  
+  /* Form Group */
+  .admin-result__form-group {
+    margin-bottom: 25px;
+  }
+  
+  .admin-result__form-group label {
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+    color: black;
+  }
+  
+  .admin-result__form-group input,
+  .admin-result__form-group button {
+    width: 95%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .admin-result__form-group input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+  }
+  
+  /* Button Styling */
+  .admin-result__form-group button {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-result__form-group button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Error Messages */
+  .admin-result__error {
+    color: #d9534f;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  /* Table Styling */
+  .admin-result__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .admin-result__table th,
+  .admin-result__table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .admin-result__table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .admin-result__table td input {
+    width: 80%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .admin-result__table td input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+  }
+  
+  /* Submit Button */
+  .admin-result__submit {
+    margin-top: 20px;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-result__submit:hover {
+    background-color: #0056b3;
+  }
+  

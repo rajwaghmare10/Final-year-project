@@ -105,21 +105,23 @@
 
 /* Login Button */
 .lg-button {
-    padding: 10px 20px;
     background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
     border: none;
-    color: #fff;
-    font-size: 1em;
-    border-radius: 20px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    transition: background-color 0.3s;
+    border-radius: 15px;
+    font-size: 16px;
 }
 
 .lg-button:hover {
     background-color: #0056b3;
 }
+
+.lg-button:active {
+    transform: scale(0.98);
+}
+
 
 /* Body Padding to Prevent Overlap */
 body {

@@ -18,7 +18,7 @@
 
 .admin-tournament__action-selector,
 .admin-tournament__form-group {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .admin-tournament__form-group label {
@@ -26,13 +26,13 @@
   font-weight: bold;
   display: block;
   margin-bottom: 8px;
-  color: #555;
+  color: black;
 }
 
 .admin-tournament__form-group input,
 .admin-tournament__form-group select,
 .admin-tournament__form-group button {
-  width: 100%;
+  width: 95%;
   padding: 10px;
   font-size: 14px;
   border: 1px solid #ccc;
@@ -87,4 +87,9 @@
   margin-top: 20px;
   padding: 12px;
   font-size: 16px;
+}
+
+.admin-tournament__form-group p{
+  color: red;
+  font-size: 14px;
 }

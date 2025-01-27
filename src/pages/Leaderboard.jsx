@@ -1,11 +1,27 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { togglecontext } from '../context/context';
 import './Leaderboard.css';
 import LeaderboardCard from '../components/leaderboard-comp/LeaderboardCard';
+import { getLeaderboardData } from '../api/api';
 
 const Leaderboard = () => {
   const isOpen = useContext(togglecontext);
-  const [activeLeaderboard, setActiveLeaderboard] = useState('weekly');
+  const [activeLeaderboard, setActiveLeaderboard] = useState('week');
+  const [leaderboardData, setLeaderboardData] = useState([]);
+
+
+  useEffect(() => {
+    const fetchLeaderboard = async () => {
+      try {
+        const response = await getLeaderboardData(activeLeaderboard);
+        setLeaderboardData(response.leaderboard);
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchLeaderboard();
+  }, [activeLeaderboard]);
 
   const handleLeaderboardSwitch = (type) => {
     setActiveLeaderboard(type);
@@ -16,37 +32,26 @@ const Leaderboard = () => {
       <div className='leaderboard-title'>
         <h1>Leaderboard</h1>
       </div>
-      
+
       <div className='lb-range'>
-        <button 
-          className={`leaderboard-info ${activeLeaderboard === 'weekly' ? 'activeLB' : ''}`}
-          onClick={() => handleLeaderboardSwitch('weekly')}
+        <button
+          className={`leaderboard-info ${activeLeaderboard === 'week' ? 'activeLB' : ''}`}
+          onClick={() => handleLeaderboardSwitch('week')}
         >
           Weekly
         </button>
-        <button 
-          className={`leaderboard-info ${activeLeaderboard === 'monthly' ? 'activeLB' : ''}`}
-          onClick={() => handleLeaderboardSwitch('monthly')}
+        <button
+          className={`leaderboard-info ${activeLeaderboard === 'month' ? 'activeLB' : ''}`}
+          onClick={() => handleLeaderboardSwitch('month')}
         >
           Monthly
         </button>
       </div>
 
       <div className='leaderboard-container'>
-        {/* Display leaderboard based on the selected option */}
-        {activeLeaderboard === 'weekly' ? (
-          <>
-            <LeaderboardCard/>
-            <LeaderboardCard/>
-            <LeaderboardCard/>
-          </>
-        ) : (
-          <>
-            <LeaderboardCard/>
-            <LeaderboardCard/>
-            <LeaderboardCard/>
-          </>
-        )}
+        {leaderboardData.slice(0, 3).map((leaderboard, index) => (
+          <LeaderboardCard key={index} leaderboard={leaderboard} index={index} />
+        ))}
       </div>
     </div>
   );
