@@ -17,10 +17,11 @@
   width: 500px;
   background: #1a1a2e;
   color: #fff;
-  padding: 20px;
+  padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
   position: relative;
+  border: 1px solid rgba(110, 106, 240, 0.2);
 }
 
 /* Close Button */
@@ -31,79 +32,189 @@
   font-size: 1.5rem;
   color: #fff;
   cursor: pointer;
-  transition: color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
 .close-btn:hover {
   color: #f00;
   transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Title Styling */
+.createTeam-title {
+  margin-bottom: 0px;
+}
+
 .createTeam-title h3 {
   margin: 0;
   font-size: 1.8rem;
   text-align: center;
   color: #6e6af0;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Form Section */
 .createTeam-section form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
   margin-top: 20px;
 }
 
 .input-group {
   display: flex;
   flex-direction: column;
+  gap: 8px;
 }
 
 .input-group label {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #ddd;
-  margin-bottom: 5px;
+  font-weight: 500;
 }
 
 .input-group input {
-  border: 2px solid #6e6af0;
+  border: 2px solid rgba(110, 106, 240, 0.4);
   border-radius: 8px;
-  background-color: #12122b;
+  background-color: rgba(18, 18, 43, 0.8);
   color: #fff;
-  font-size: 0.9rem;
-  padding: 8px;
+  font-size: 1rem;
+  padding: 12px 15px;
   outline: none;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .input-group input::placeholder {
-  color: #aaa;
+  color: rgba(170, 170, 170, 0.7);
 }
 
 .input-group input:focus {
-  border-color: #5551ca;
+  border-color: #6e6af0;
+  background-color: rgba(18, 18, 43, 0.95);
+  box-shadow: 0 0 0 4px rgba(110, 106, 240, 0.1);
 }
 
 /* Submit Button */
 .submit-btn-container {
   text-align: center;
+  margin-top: 10px;
 }
 
 .createTeam-btn {
   width: 60%;
-  padding: 12px;
+  padding: 14px;
   background-color: #6e6af0;
   color: #fff;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 600;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(110, 106, 240, 0.3);
 }
 
 .createTeam-btn:hover {
   background-color: #5551ca;
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(110, 106, 240, 0.4);
+}
+
+.createTeam-btn:active {
+  transform: translateY(0);
+}
+
+/* Team Details Section */
+.team-details-section {
+  padding: 20px 0;
+}
+
+.team-details-section h4 {
+  color: #6e6af0;
+  font-size: 1.4rem;
+  margin: 0 0 15px;
+  text-align: center;
+}
+
+.team-details-section p {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.team-details-section h5 {
+  color: #ddd;
+  font-size: 1.2rem;
+  margin: 25px 0 15px;
+}
+
+/* Team Members List */
+.team-members-list {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+  background-color: rgba(18, 18, 43, 0.8);
+  border-radius: 8px;
+  border: 1px solid rgba(110, 106, 240, 0.2);
+}
+
+.team-members-list li {
+  padding: 12px 15px;
+  border-bottom: 1px solid rgba(110, 106, 240, 0.2);
+}
+
+.team-members-list li:last-child {
+  border-bottom: none;
+}
+
+/* Register Button */
+.register-btn-container {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.register-btn {
+  width: 60%;
+  padding: 14px;
+  background-color: #6e6af0;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(110, 106, 240, 0.3);
+}
+
+.register-btn:hover {
+  background-color: #5551ca;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(110, 106, 240, 0.4);
+}
+
+.register-btn:active {
+  transform: translateY(0);
+}
+
+/* Success Message */
+.success-message {
+  text-align: center;
+  margin-top: 25px;
+  padding: 15px;
+  background-color: rgba(39, 174, 96, 0.2);
+  border-radius: 8px;
+  border: 1px solid rgba(39, 174, 96, 0.3);
+}
+
+.success-message h4 {
+  color: #2ecc71;
+  margin: 0;
 }

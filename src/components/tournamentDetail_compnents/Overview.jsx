@@ -3,20 +3,33 @@ import React from 'react';
 import './overview.css';
 
 const Overview = ({ data }) => {
-  const { tournament_name, scrim_name, prizepool } = data;
+  const { tournament_name, scrim_name, prizepool, match_timing ,game_mode , entry_fee} = data;
   const [togglerule, settogglerule] = useState(false);
-  
+
   const handleRule = () => {
     settogglerule(!togglerule);
   };
+
+  const matchStartTime = new Date(match_timing).toLocaleString('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+
+  const idpTime = new Date(new Date(match_timing).getTime() - 15 * 60000).toLocaleString('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+  
   return (
     <div className="overview-container">
       <p>
         {tournament_name || scrim_name}<br />
         PRIZEPOOL : {prizepool} XE POINTS<br />
+        ENTRY FEES : {entry_fee|| 'FREE'} <br/>
         ADVANCE ROOMS - 3X LOOT<br /><br />
-        • IDP - 8:03 PM | START - 8:11 PM<br />
+        • IDP - {idpTime} | START - {matchStartTime}<br />
         • ALL 4 PLAYERS MUST BE REGISTERED & CHECKED-IN<br />
+
       </p>
       <div className="format-section">
         <p className="format-title">FORMAT</p>
@@ -27,7 +40,7 @@ const Overview = ({ data }) => {
           </div>
           <div className="card">
             <p className="card-title"><i className="fas fa-users"></i> Team Size</p>
-            <p className="card-detail">Squad</p>
+            <p className="card-detail">{game_mode}</p>
           </div>
           <div className="card">
             <p className="card-title"><i className="fas fa-trophy"></i> Prizepool</p>
@@ -39,7 +52,7 @@ const Overview = ({ data }) => {
           </div>
           <div className="card">
             <p className="card-title"><i className="fas fa-users-cog"></i>Registered</p>
-            <p className="card-detail">{data.filled_slots} / 20</p>
+            <p className="card-detail">{data.filled_slots || "0"} / 20</p>
           </div>
         </div>
       </div>

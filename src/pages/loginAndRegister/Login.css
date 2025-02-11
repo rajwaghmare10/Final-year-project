@@ -84,6 +84,11 @@
     text-decoration: underline;
 }
 
+.fplink{
+    margin: 10px 0px;
+    text-align: right;
+}
+
 .error-message {
     color: red;
     font-size: 14px;
@@ -95,3 +100,38 @@
     background-color: gray;
     cursor: not-allowed;
 }
+
+.role-selection-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .role-btn {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    background: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .role-btn:hover {
+    background: #0056b3;
+  }
+  

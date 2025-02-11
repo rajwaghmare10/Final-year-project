@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getTeamsByTournamentId } from '../../api/api';
 import './Credentials.css';
 
-const Credentials = ({ data }) => {
+const Credentials = ({ data ,type}) => {
   const [showRoomDetails, setShowRoomDetails] = useState(true);
   const [teams, setTeams] = useState([]);
 
@@ -10,10 +10,9 @@ const Credentials = ({ data }) => {
   useEffect(() => {
     const fetchTeams = async () => {
       try {
-        if (data.tournament_id) {
-          const response = await getTeamsByTournamentId(data.tournament_id);
+        if (data.tournament_id || data.scrim_id) {
+          const response = await getTeamsByTournamentId(data.tournament_id || data.scrim_id ,type);
           setTeams(response.teams || []);
-          console.log(response);
         }
       } catch (error) {
         console.error('Error fetching teams:', error);
@@ -21,7 +20,7 @@ const Credentials = ({ data }) => {
     };
 
     fetchTeams();
-  }, [data.tournament_id, data.scrim_id]);
+  }, [data.tournament_id, data.scrim_id, type]);
 
   // Check room details availability
   useEffect(() => {

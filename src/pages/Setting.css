@@ -1,76 +1,130 @@
-.setting-container {
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .user-details {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .detail-item {
-    margin-bottom: 15px;
-  }
-  
-  .detail-item label {
-    font-weight: bold;
-  }
-  
-  .detail-item p {
-    font-size: 16px;
-    color: #333;
-  }
-  
-  input {
-    padding: 10px;
-    width: 100%;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .action-buttons button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .save-btn {
-    background-color: green;
-    color: white;
-  }
-  
-  .cancel-btn {
-    background-color: red;
-    color: white;
-  }
-  
-  .edit-btn {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .edit-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  .success-message {
-    color: green;
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  
-  .error-message {
-    color: red;
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  
+.setting-container{
+  max-width: 100%;
+  margin-left: 80px;
+  padding: 35px 20px;
+  background-color: rgb(12, 22, 63);
+  color: #ffffff; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: margin-left 0.3s ease;
+}
+
+.setting-container .sidebar-open{
+  margin-left: auto;
+}
+
+.setting-container h2 {
+  font-size: 2rem;
+  color: #c4a8f0; /* Soft purple color for headings */
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.setting-user-details {
+  margin-top: 20px;
+  margin-left: 100px;
+  width: 80%;
+  margin-bottom: 21px;
+}
+
+.setting-detail-item {
+  background-color: #1f2a47; /* Slightly darker background for individual sections */
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+}
+
+.setting-detail-item label {
+  color: #c4a8f0;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+  margin-right: 15px;
+}
+
+.setting-detail-item p {
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.setting-input {
+  padding: 7px;
+  width: 80%;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #c4a8f0;
+  background-color: #1f2a47;
+  color: #ffffff;
+}
+
+.setting-input:focus {
+  outline: none;
+  border: 1px solid #c4a8f0;
+  background-color: #2a3b5c;
+}
+
+.setting-action-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.setting-save-btn {
+  background-color: #5cb85c;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.setting-save-btn:hover {
+  background-color: #4cae4c;
+}
+
+.setting-cancel-btn {
+  background-color: #d9534f;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.setting-cancel-btn:hover {
+  background-color: #c9302c;
+}
+
+.setting-edit-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.setting-edit-btn:hover {
+  background-color: #0056b3;
+}
+
+.setting-success-message {
+  color: #5cb85c; /* Success message color */
+  font-size: 1rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.setting-error-message {
+  color: #d9534f; /* Error message color */
+  font-size: 1rem;
+  margin-bottom: 10px;
+  text-align: center;
+}

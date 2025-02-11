@@ -276,7 +276,7 @@ const AdminScrim = () => {
           <option value='addResult'>Add result</option>
         </select>
       </div>
-      {(action === 'addResult')&&<AdminResult/>}
+      {(action === 'addResult') && <AdminResult type="scrim" />}
       {/* ID Input for Edit/Delete */}
       {(action === 'edit' || action === 'delete') && (
         <div className="admin-scrim__form-group">

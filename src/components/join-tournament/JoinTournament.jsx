@@ -31,8 +31,8 @@ const JoinTournament = ({ closeJoinTour , id , type ,gameMode}) => {
         </button>
 
         {/* Render Modals Conditionally */}
-        {showCreateTeam && <CreateTeam closeCreateTeam={handleCreateTeamToggle} id ={id} type ={type} gameMode ={gameMode}/>}
-        {showJoinTeam && <JoinTeam closeJoinTeam={handleJoinTeamToggle}  id ={id} type ={type} gameMode ={gameMode}/>}
+        {showCreateTeam  && <CreateTeam closeCreateTeam={handleCreateTeamToggle} id ={id} type ={type} gameMode ={gameMode}/>}
+        {showJoinTeam   && <JoinTeam closeJoinTeam={handleJoinTeamToggle}  id ={id} type ={type} gameMode ={gameMode}/>}
       </div>
     </div>
   );

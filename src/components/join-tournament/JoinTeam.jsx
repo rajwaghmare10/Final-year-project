@@ -4,14 +4,15 @@ import { joinTeam } from '../../api/api';
 
 const JoinTeam = (props) => {
   const [teamCode, setTeamCode] = useState('');
-  const [bgmiID, setBgmiID] = useState('');
+  const [In_Bgmiusername, setIn_Bgmiusername] = useState('');
   const [message, setMessage] = useState('');
   const [isJoined, setIsJoined] = useState(false); // Success state
 
   const handleJoinTeam = async (e) => {
     e.preventDefault();
     try {
-      const response = await joinTeam({ team_id: teamCode, bgmi_id: bgmiID });
+      const user = JSON.parse(localStorage.getItem("user"));
+      const response = await joinTeam({ team_id: teamCode, bgmi_id: user.id ,in_bgmi_username:In_Bgmiusername });
       setMessage(response.message); // Show success message
       setIsJoined(true); // Set success state
     } catch (error) {
@@ -49,12 +50,12 @@ const JoinTeam = (props) => {
                   />
                 </div>
                 <div className="input-group">
-                  <label>Enter Your BGMI ID:</label>
+                  <label>Enter Your Ingame Name In BGMI</label>
                   <input 
                     type="text" 
-                    placeholder="Enter your BGMI ID" 
-                    value={bgmiID} 
-                    onChange={(e) => setBgmiID(e.target.value)} 
+                    placeholder="Enter Your Ingame Name In BGMI" 
+                    value={In_Bgmiusername} 
+                    onChange={(e) => setIn_Bgmiusername(e.target.value)} 
                     required 
                   />
                 </div>

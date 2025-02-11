@@ -15,7 +15,6 @@ const Leaderboard = () => {
       try {
         const response = await getLeaderboardData(activeLeaderboard);
         setLeaderboardData(response.leaderboard);
-        console.log(response);
       } catch (error) {
         console.error(error);
       }

@@ -1,8 +1,19 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./AdminNav.css";
 
 const AdminNav = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Remove authentication details from localStorage
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("user");
+
+    // Redirect to login page
+    navigate("/login");
+  };
+
   return (
     <div className="admin-navbar">
       <div className="nav-brand">
@@ -10,7 +21,7 @@ const AdminNav = () => {
           <h2>Admin Dashboard</h2>
         </NavLink>
       </div>
-      <div className="admin-nav-links"> {/* Fixed typo */}
+      <div className="admin-nav-links">
         <NavLink to="/admin/tournamentManagement" className="admin-nav-link">
           Tournaments
         </NavLink>
@@ -25,7 +36,7 @@ const AdminNav = () => {
         </NavLink>
       </div>
       <div className="nav-profile">
-        <button className="logout-btn">Logout</button>
+        <button className="logout-btn" onClick={handleLogout}>Logout</button>
       </div>
     </div>
   );

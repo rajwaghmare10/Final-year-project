@@ -4,21 +4,23 @@ import './AdminTeam.css';
 
 const AdminTeam = () => {
   const [selectedOption, setSelectedOption] = useState('');
-  const [tournamentId, setTournamentId] = useState('');
+  const [tournamentOrScrimId, setTournamentOrScrimId] = useState('');
   const [teamId, setTeamId] = useState('');
   const [leaderId, setLeaderId] = useState('');
   const [coins, setCoins] = useState('');
   const [teams, setTeams] = useState([]);
   const [error, setError] = useState('');
+  const [type, setType] = useState('tournament'); // Default to 'tournament'
 
   // Reset form and state
   const resetForm = () => {
     setError('');
-    setTournamentId('');
+    setTournamentOrScrimId('');
     setTeamId('');
     setLeaderId('');
     setCoins('');
     setTeams([]);
+    setType('tournament');
   };
 
   // Handle option selection
@@ -27,16 +29,17 @@ const AdminTeam = () => {
     resetForm();
   };
 
-  // Fetch teams for a specific tournament
+  // Fetch teams for a specific tournament/scrim
   const fetchTeams = async () => {
-    if (!tournamentId.trim()) {
-      setError('Please enter a valid Tournament ID.');
+    if (!tournamentOrScrimId.trim()) {
+      setError('Please enter a valid Tournament/Scrim ID.');
       return;
     }
+
     try {
-      const response = await getTeamsByTournamentId(tournamentId);
+      const response = await getTeamsByTournamentId(tournamentOrScrimId, type); // Pass type
       if (response.teams.length === 0) {
-        setError('No teams found for this tournament.');
+        setError(`No teams found for this ${type}.`);
         setTeams([]);
       } else {
         setTeams(response.teams);
@@ -44,7 +47,7 @@ const AdminTeam = () => {
       }
     } catch (err) {
       resetForm();
-      setError('Failed to fetch teams. Please check the Tournament ID.');
+      setError(`Failed to fetch teams. Please check the ${type} ID.`);
     }
   };
 
@@ -53,25 +56,22 @@ const AdminTeam = () => {
     const payload = {
       leader_id: leaderId.trim(),
       team_id: teamId.trim(),
-      coins: Number(coins), // Ensure coins is sent as a number
+      coins: Number(coins),
     };
 
     try {
       const response = await addCoinsToTeamLeader(payload);
       if (response) {
-        alert("Coins added successfully");
+        alert('Coins added successfully');
         resetForm();
+      } else {
+        setError('Failed to add coins');
       }
-      else {
-        setError("Failed to add coins");
-      }
-
     } catch (err) {
       console.error('Error in addCoins:', err);
       setError(err.response?.data?.message || 'An error occurred. Please try again.');
     }
   };
-
 
   return (
     <div className="admin-team-container">
@@ -91,16 +91,39 @@ const AdminTeam = () => {
       {selectedOption === 'fetchTeams' && (
         <div className="admin-fetch-teams">
           <div className="admin-input-group">
-            <label htmlFor="tournamentId">Tournament ID:</label>
+            <label htmlFor="tournamentOrScrimId">Tournament/Scrim ID:</label>
             <input
               type="text"
-              id="tournamentId"
-              value={tournamentId}
-              onChange={(e) => setTournamentId(e.target.value)}
-              placeholder="Enter Tournament ID"
+              id="tournamentOrScrimId"
+              value={tournamentOrScrimId}
+              onChange={(e) => setTournamentOrScrimId(e.target.value)}
+              placeholder="Enter Tournament/Scrim ID"
             />
-            <button onClick={fetchTeams}>Fetch Teams</button>
           </div>
+
+          {/* Radio buttons to select Tournament or Scrim */}
+          <div className="admin-radio-group">
+            <label>
+              <input
+                type="radio"
+                value="tournament"
+                checked={type === 'tournament'}
+                onChange={(e) => setType(e.target.value)}
+              />
+              Tournament
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="scrim"
+                checked={type === 'scrim'}
+                onChange={(e) => setType(e.target.value)}
+              />
+              Scrim
+            </label>
+          </div>
+
+          <button onClick={fetchTeams}>Fetch Teams</button>
           {error && <p className="error-message">{error}</p>}
           {teams.length > 0 && (
             <table className="admin-team-table">
@@ -109,7 +132,7 @@ const AdminTeam = () => {
                   <th>Team ID</th>
                   <th>Team Name</th>
                   <th>Total Members</th>
-                  <th>Leader ID</th> {/* New column added */}
+                  <th>Leader ID</th>
                 </tr>
               </thead>
               <tbody>
@@ -118,14 +141,13 @@ const AdminTeam = () => {
                     <td>{team.team_id}</td>
                     <td>{team.team_name}</td>
                     <td>{team.total_members}</td>
-                    <td>{team.leader_id}</td> {/* Display Leader ID */}
+                    <td>{team.leader_id}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           )}
         </div>
-
       )}
 
       {/* Add Coins Section */}

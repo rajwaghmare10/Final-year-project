@@ -15,6 +15,7 @@ const Sidebar = () => {
         <li><NavLink to="/scrims"><i className="fas fa-gamepad"></i> {isOpen && 'Scrims'}</NavLink></li>
         <li><NavLink to="/leaderboard"><i className="fas fa-chart-line"></i> {isOpen && 'Leaderboard'}</NavLink></li>
         <li><NavLink to="/howtojoin"><i className="fas fa-question-circle"></i> {isOpen && 'How to Join'}</NavLink></li>
+        <li><NavLink to="/redeemReward"><i className="fas fa-gift"></i> {isOpen && 'Reward'}</NavLink></li>
         <li><NavLink to="/settings"><i className="fas fa-cog"></i> {isOpen && 'Settings'}</NavLink></li>
       </ul>
     </div>

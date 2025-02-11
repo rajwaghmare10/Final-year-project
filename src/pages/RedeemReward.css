@@ -1,0 +1,115 @@
+/* Main Container */
+.redeem-container {
+    margin-left: 80px;
+    background-color: rgb(12, 22, 63);
+    color: white;
+    padding: 40px;
+    min-height: 80vh;
+    transition: margin-left 0.3s ease;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Sidebar open effect */
+.sidebar-open {
+    margin-left: 200px;
+}
+
+/* Title Styling */
+.redeem-container h1 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    color: #c4a8f0;
+    margin-bottom: 30px;
+}
+
+
+/* Reward List */
+.reward-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+/* Reward Card */
+.reward-card {
+    background-color: rgba(228, 229, 231, 0.1);
+    border: 2px solid rgba(228, 229, 231, 0.3);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.reward-card:hover {
+    transform: translateY(-5px);
+}
+
+.reward-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.reward-card h4 {
+    color: #c4a8f0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.reward-card p {
+    color: rgb(228, 229, 231);
+    margin-bottom: 15px;
+}
+
+/* Redeem Button */
+.redeem-button {
+    padding: 10px 20px;
+    background-color: rgb(12, 22, 63);
+    color: rgb(228, 229, 231);
+    border: 2px solid rgba(228, 229, 231, 0.3);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.redeem-button:hover:not(:disabled) {
+    background-color: rgba(133, 132, 132, 0.7);
+}
+
+.redeem-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* History Section */
+.redeem-container h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: #c4a8f0;
+    margin: 30px 0 20px;
+    text-align: center;
+}
+
+.history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: rgba(228, 229, 231, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.history-list li {
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(228, 229, 231, 0.3);
+    color: rgb(228, 229, 231);
+}
+
+.history-list li:last-child {
+    border-bottom: none;
+}

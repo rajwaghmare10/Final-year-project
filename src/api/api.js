@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_BASE_URL = 'http://localhost:4000'; // Base URL for your API
 
 //login user
-export const login = async ({email, password}) => {
+export const login = async ({ email, password }) => {
   try {
     const response = await axios.post(`${API_BASE_URL}/user/login`, { email, password });
     return response.data;
@@ -11,6 +11,30 @@ export const login = async ({email, password}) => {
     console.error('Error during login request:', error.response?.data || error.message);
   }
 };
+
+//send otp
+export const sendOtp = async ({ email }) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/auth/send-otp`, { email });
+    return response.data;
+  } catch (error) {
+    console.error('Error during send otp request:', error.response?.data || error.message);
+  }
+}
+
+//otp verification
+export const verifyOtp = async ({ email, otp }) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/auth/verify-otp`, {
+      email
+      , otp
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error during otp verification request:', error.response?.data || error.message);
+  }
+}
+
 
 //register user 
 export const register = async (userInfo) => {
@@ -22,6 +46,18 @@ export const register = async (userInfo) => {
   }
 };
 
+//update password
+export const updatePassword = async (email, newPassword) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/user/updatePassword`, {
+      email, newPassword
+    })
+    return response.data;
+  }
+  catch (error) {
+    console.error('Error during update password request:', error.response?.data || error.message);
+  }
+}
 
 
 // Fetch all teams
@@ -136,9 +172,9 @@ export const deleteTournament = async (id) => {
 };
 
 // Fetch teams for a specific tournament by Tournament ID
-export const getTeamsByTournamentId = async (tournamentId) => {
+export const getTeamsByTournamentId = async (tournamentId, type) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/teams/${tournamentId}`);
+    const response = await axios.get(`${API_BASE_URL}/teams/${tournamentId}/${type}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching teams for tournament:', error.response?.data?.message || error.message);
@@ -227,7 +263,6 @@ export const getLeaderboardData = async (type) => {
 //create a team
 export const createTeam = async (teamData) => {
   try {
-    console.log(teamData);
     const response = await axios.post(`${API_BASE_URL}/teams/create`, teamData);
     return response.data;
   } catch (error) {
@@ -236,9 +271,21 @@ export const createTeam = async (teamData) => {
   }
 };
 
-export const getTeamMembers = async (id) => {
+//get team members by team id
+export const getTeamMemberbyid = async (id) => {
   try {
     const response = await axios.get(`${API_BASE_URL}/teams/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching team:', error.response?.data?.message || error.message);
+    throw error;
+  }
+};
+
+//get team members by team id for specific tournament and scrim
+export const getTeamMembers = async (userid , id ,type) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/teams/${userid}/${id}/${type}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching team:', error.response?.data?.message || error.message);
@@ -265,4 +312,20 @@ export const joinTeam = async (teamData) => {
     throw error;
   }
 }
+
+export const updateResult = async (teamData) => {
+  try {
+    const response = await axios.put(`${API_BASE_URL}/teams/updateResult`, teamData);
+    return response.data;
+  } catch (error) {
+    console.error('Error updating result:', error.response?.data?.message || error.message);
+    throw error;
+  }
+}
+
+export const checkIfUserJoinedTeam = async (userID, tournamentID, type) => {
+  const response = await fetch(`/teams/check-user-joined?userID=${userID}&tournamentID=${tournamentID}&type=${type}`);
+  return response.json();
+};
+
 

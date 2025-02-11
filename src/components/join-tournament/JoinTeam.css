@@ -5,7 +5,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,15 +14,14 @@
 
 /* Modal Content Styling */
 .joinTeam-content {
-  width: 400px;
+  width: 500px;
   background: #1a1a2e;
   color: #fff;
-  padding: 20px;
+  padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
   position: relative;
-  display: flex;
-  flex-direction: column;
+  border: 1px solid rgba(110, 106, 240, 0.2);
 }
 
 /* Close Button */
@@ -33,108 +32,136 @@
   font-size: 1.5rem;
   color: #fff;
   cursor: pointer;
-  transition: color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
 .close-btn:hover {
   color: #f00;
   transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Title Styling */
+.jointeam-title {
+  margin-bottom: 0px;
+}
+
 .jointeam-title h3 {
   margin: 0;
   font-size: 1.8rem;
   text-align: center;
   color: #6e6af0;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Form Section */
 .jointeam-section form {
   display: flex;
   flex-direction: column;
+  gap: 25px;
   margin-top: 20px;
-  gap: 15px;
 }
 
 .input-group {
   display: flex;
   flex-direction: column;
+  gap: 8px;
 }
 
 .input-group label {
-  font-size: 1rem;
-  margin-bottom: 5px;
-  color: #aaa;
-  font-weight:bold;
+  font-size: 0.95rem;
+  color: #ddd;
+  font-weight: 500;
 }
 
 .input-group input {
-  padding: 10px;
-  border: 2px solid #6e6af0;
+  border: 2px solid rgba(110, 106, 240, 0.4);
   border-radius: 8px;
-  background-color: #12122b;
+  background-color: rgba(18, 18, 43, 0.8);
   color: #fff;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  padding: 12px 15px;
   outline: none;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .input-group input::placeholder {
-  color: #aaa;
+  color: rgba(170, 170, 170, 0.7);
 }
 
 .input-group input:focus {
-  border-color: #5551ca;
+  border-color: #6e6af0;
+  background-color: rgba(18, 18, 43, 0.95);
+  box-shadow: 0 0 0 4px rgba(110, 106, 240, 0.1);
 }
 
 /* Submit Button */
 .jointeam-btn-container {
-  display: flex;
-  justify-content: center;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .joinTeam-btn {
-  width: 80%;
-  padding: 12px;
+  width: 60%;
+  padding: 14px;
   background-color: #6e6af0;
   color: #fff;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 600;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(110, 106, 240, 0.3);
 }
 
 .joinTeam-btn:hover {
   background-color: #5551ca;
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(110, 106, 240, 0.4);
 }
+
+.joinTeam-btn:active {
+  transform: translateY(0);
+}
+
+/* Message Styling */
+.message {
+  color: #ff4d4d;
+  text-align: center;
+  margin: 10px 0;
+  padding: 8px;
+  border-radius: 6px;
+  background-color: rgba(255, 77, 77, 0.1);
+  border: 1px solid rgba(255, 77, 77, 0.2);
+}
+
+/* Success Message */
 .success-message {
   text-align: center;
-  padding: 20px;
+  margin-top: 25px;
+  padding: 15px;
+  background-color: rgba(39, 174, 96, 0.2);
+  border-radius: 8px;
+  border: 1px solid rgba(39, 174, 96, 0.3);
 }
 
 .success-message p {
-  color: green;
-  font-size: 18px;
-  margin-top: 10px;
+  color: #2ecc71;
+  font-size: 1.1rem;
+  margin: 10px 0;
 }
 
 .green-tick {
-  color: green;
-  font-size: 50px;
-  font-weight: bold;
-}
-
-.jointeam-title {
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.message {
-  color: red;
-  text-align: center;
+  color: #2ecc71;
+  font-size: 3rem;
   margin-bottom: 10px;
+  display: block;
 }

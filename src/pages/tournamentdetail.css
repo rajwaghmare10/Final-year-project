@@ -24,11 +24,13 @@
   overflow: hidden;
   margin-left: 25px;
 }
+.tournament-name-joinbtn{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .join-btn {
-  position: absolute;
-  bottom: 45px;
-  right: 60px;
   padding: 15px;
   background-color: #5954eb;
   color: white;

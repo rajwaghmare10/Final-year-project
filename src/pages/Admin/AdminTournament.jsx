@@ -25,6 +25,7 @@ const AdminTournament = () => {
     status: '',
     registration_open: '',
     match_timing: '',
+    entry_fee: '',
     banner: null, // New banner field
   });
 
@@ -69,6 +70,10 @@ const AdminTournament = () => {
         yup.ref('end_date'),
         'Match timing must be after the registration end date'
       ),
+    entry_fee: yup
+      .number()
+      .typeError('Entry fee must be a number')
+      .required('Entry fee is required'),
     banner: yup
       .mixed()
       .required('Image is required'),
@@ -130,6 +135,7 @@ const AdminTournament = () => {
       status: '',
       registration_open: '',
       match_timing: '',
+      entry_fee :'',
       banner: null,
     });
     setBannerPreview(null);
@@ -189,6 +195,7 @@ const AdminTournament = () => {
       status: '',
       registration_open: '',
       match_timing: '',
+      entry_fee:'',
       banner: null,
     });
     try {
@@ -220,6 +227,7 @@ const AdminTournament = () => {
         registration_open: tournament.registration_open || '',
         match_timing: formattedMatchTiming,
         banner: tournament.banner || null,
+        entry_fee: tournament.entry_fee || '',
       });
       if (tournament.banner) {
         setBannerPreview(tournament.banner); // Assuming the backend sends the banner URL
@@ -281,8 +289,9 @@ const AdminTournament = () => {
         </select>
       </div>
 
-      {(action === 'addResult')&&<AdminResult/>}
-      
+      {(action === 'addResult') && <AdminResult type="tournament" />}
+
+
       {/* ID Input for Edit/Delete */}
       {(action === 'edit' || action === 'delete') && (
         <div className="admin-tournament__form-group">
@@ -342,6 +351,17 @@ const AdminTournament = () => {
               onChange={handleChange}
             />
             {errors.prizepool && <p>{errors.prizepool.message}</p>}
+          </div>
+
+          <div className="admin-tournament__form-group">
+            <label>Entry Fees</label>
+            <input
+              type="number"
+              {...register('entry_fee')}
+              value={tournamentData.entry_fee}
+              onChange={handleChange}
+            />
+            {errors.entry_fee && <p>{errors.entry_fee.message}</p>}
           </div>
 
           {/* Banner Upload */}

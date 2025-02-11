@@ -1,35 +1,47 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; 
 import './Navbar.css';
 import Sidebar from './Sidebar';
 import { useNavigate } from 'react-router-dom';
+import { getUserById } from '../../api/api';
+import PurchaseCoins from './PurchaseCoins';
 
 const Navbar = ({ toggleSidebar }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
-  const [userCoins, setUserCoins] = useState(0); // State to track user's coins
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userCoins, setUserCoins] = useState(0);
+  const [userDetails, setUserDetails] = useState(null); // Store user details
   const navigate = useNavigate();
+  const [showCoinModal, setShowCoinModal] = useState(false);
 
   useEffect(() => {
-    // Check if user is logged in by checking for a token in localStorage
     const token = localStorage.getItem('authToken');
-    const user = JSON.parse(localStorage.getItem('user')); // Retrieve user details from localStorage
+    const user = JSON.parse(localStorage.getItem('user')); // Retrieve user details
     setIsLoggedIn(!!token);
 
-    // Set the user's coins if user data is available
-    if (user && user.coins !== undefined) {
-      setUserCoins(user.coins); // Assuming the user object contains a `coins` property
+    if (user?.id) {
+      fetchUserCoins(user.id);
     }
   }, []);
 
+  const fetchUserCoins = async (userId) => {
+    try {
+      const userData = await getUserById(userId);
+      setUserCoins(userData.user.coins);
+      setUserDetails(userData.user);
+    } catch (error) {
+      console.error('Error fetching user coins:', error.message);
+      setUserCoins(0);
+    }
+  };
+
   const handleLoginLogout = () => {
     if (isLoggedIn) {
-      // Logout logic
-      localStorage.removeItem('authToken'); // Remove the token
-      localStorage.removeItem('user'); // Remove user details
-      setIsLoggedIn(false); // Update login state
-      setUserCoins(0); // Reset coins to 0
-      navigate('/login'); // Redirect to login page
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('user');
+      setIsLoggedIn(false);
+      setUserDetails(null);
+      setUserCoins(0);
+      navigate('/login');
     } else {
-      // Redirect to login page
       navigate('/login');
     }
   };
@@ -48,9 +60,16 @@ const Navbar = ({ toggleSidebar }) => {
           </div>
           <div className="login-coin-container">
             {/* Coin Display */}
-            <div className="coin">
+            <div className="coin" onClick={() => setShowCoinModal(true)}>
               <i className="fa fa-coins"></i> {isLoggedIn ? userCoins : 0}
             </div>
+            {showCoinModal && (
+              <PurchaseCoins 
+                closeModal={() => setShowCoinModal(false)} 
+                userDetails={userDetails} 
+                setUserCoins={setUserCoins} 
+              />
+            )}
             {/* Login/Logout Button */}
             <div className="login">
               <button className="lg-button" onClick={handleLoginLogout}>
